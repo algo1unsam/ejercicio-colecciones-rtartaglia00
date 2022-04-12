@@ -1,7 +1,10 @@
+import items.*
+
 object rolando {
-	var capacidad = 2
+	var property capacidad = 2
 	const items = #{}
 	const historialItems = []
+	var property poderBase = 5
 	
 	
 	method agarrarItem(item) {
@@ -37,6 +40,15 @@ object rolando {
 		items.clear()
 		capacidad = 2
 	}
+	
+	method poderPelea(){
+		return poderBase + items.sum{item => item.aportaPoder(poderBase)}
+	}
+	
+	method batalla(){
+		poderBase += 1
+		items.forEach{item => item.usar() }
+	}
 }
 
 object castillo {
@@ -51,20 +63,3 @@ object castillo {
 	}
 }
 
-
-//---------------------------ARTEFACTOS-----------------------------
-object espada {
-	
-}
-
-object libro {
-	
-}
-
-object collar {
-	
-}
-
-object armadura {
-	
-}
